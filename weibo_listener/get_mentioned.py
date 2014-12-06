@@ -43,7 +43,7 @@ def analyze(status):
         if result[u'state']=="begin" and result[u'begin_id']<status[u'id']:
             ifbegin=False
             if end_str in status[u'text']:
-                result[u'end_status']=status
+                result[u'statuses'].append(status)
                 result[u'state']="finish"
                 updata(result)
             else:

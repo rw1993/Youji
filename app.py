@@ -5,7 +5,7 @@ con=pymongo.Connection("localhost",27017)
 Youji=con.Youji
 activities=Youji.activities
 urls=(
-   "activity","show_activity"
+   "/activity","show_activity"
         )
 
 app=web.application(urls,globals())
@@ -18,8 +18,10 @@ class show_activity:
         if activity is None:
             return "No such activity"
         else:
-            return render.activity(activity)
-
+            if activity[u'state']=="finish":
+                return render.activity(activity)
+            else:
+                return "activity not finish"
 
 if __name__=="__main__":
     app.run()
