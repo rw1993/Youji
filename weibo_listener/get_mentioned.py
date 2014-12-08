@@ -26,6 +26,7 @@ def begin_activity(status):
     activity[u'begin_status']=status
     activity[u'state']="begin"
     activity[u'statuses']=[]
+    activity[u'statuses'].append(status)
     activities.insert(activity)
 def updata(result):
     activities.remove({u'begin_id':result[u'begin_id']})

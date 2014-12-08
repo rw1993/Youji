@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="http://apps.bdimg.com/libs/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<title>Youji主页</title>
+</head>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+                         <h3>
+				欢迎来到游记档案馆
+			</h3>
+			<div class="carousel slide" id="carousel-384073">
+				<ol class="carousel-indicators">
+					<li data-slide-to="0" data-target="#carousel-384073">
+					</li>
+					<li data-slide-to="1" data-target="#carousel-384073">
+					</li>
+					<li data-slide-to="2" data-target="#carousel-384073" class="active">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item">
+						<img alt="" src="static/1.jpeg" />
+						<div class="carousel-caption">
+							<h4>
+								Youji
+							</h4>
+							<p>
+								万里路，书万卷，我们为你记录
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="static/2.jpeg" />
+						<div class="carousel-caption">
+							<h4>
+								Youji
+							</h4>
+							<p>
+								走走看看，不留遗憾
+							</p>
+						</div>
+					</div>
+					<div class="item active">
+						<img alt="" src="static/3.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Youji
+							</h4>
+							<p>
+								留下回忆，分享感动
+							</p>
+						</div>
+					</div>
+				</div> <a data-slide="prev" href="#carousel-384073" class="left carousel-control">‹</a> <a data-slide="next" href="#carousel-384073" class="right carousel-control">›</a>
+			</div>
+			<form>
+				<fieldset>
+					 <legend>Youji</legend> <label>搜游记</label><input type="text" /> <span class="help-block">请输入您想查看的人的微博昵称，会显示其游记</span><button type="submit" class="btn">提交</button>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+<body>
+</body>
+</html>
+

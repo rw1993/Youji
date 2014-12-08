@@ -5,10 +5,27 @@ con=pymongo.Connection("localhost",27017)
 Youji=con.Youji
 activities=Youji.activities
 urls=(
-   "/activity","show_activity"
+   "/activity","show_activity",
+   "/index","index",
+   "/search","activity_list",
         )
 
 app=web.application(urls,globals())
+
+class activity_list:
+    def POST(self):
+        webinput=web.input()
+        id_list=[]
+        name=webinput[u'name']
+        for activity in activities.find():
+            if str(name)==str(activity[u'begin_status'][u'user'][u'screen_name']):
+                if activity[u'state']=="finish":
+                    id_list.append(activity[u'begin_id'])
+        return render.activity_list(id_list)
+
+class index:
+    def GET(self):
+        return render.index()
 
 class show_activity:
     def GET(self):
