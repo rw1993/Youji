@@ -1,6 +1,6 @@
 from GetWeiBo import pachong
 import pymongo
-import pdfcrowd
+import pdfkit
 con=pymongo.Connection("localhost",27017)
 Youji=con.Youji
 activities=Youji.activities
@@ -8,25 +8,15 @@ p=pachong()
 client=p.getClient()
 begin_str=u"\u65c5\u7a0b\u5f00\u59cb"
 end_str=u"\u65c5\u7a0b\u7ed3\u675f"
-def savepdf(result):
-    filename=str(result[u'begin_id'])
-    filename+=".pdf"
-    client=pdfcrowd.Client("rw1993","d46f29fedccb37abefde8cfdf5d9206c")
-    fileurl="../static/"+filename
-    f=file(fileurl,"w")
-    uri="http://0.0.0.0:8080/activity?id="+str(result[u'begin_id'])
-    client.convertURI(uri,f)
 def send_weibo(status,begin_id):
     string=u'\u60a8\u7684\u6e38\u8bb0\u5df2\u7ecf\u751f\u6210'+' link='
     ids=str(begin_id)
     url="http://0.0.0.0:8080/activity?id="+ids
     string+=url
     name=status[u'user'][u'screen_name']
-    pdflink="http://0.0.0.0:8080/activity?id="+ids
-    string+=" pdf="+pdflink
     string+=u' @'
     string+=name
-    client.statuses.update.post(status=string)
+    #client.statuses.update.post(status=string)
 def download(page,since_id):
     data=client.statuses.mentions.get(count=200,page=page,since_id=since_id)
     return data[u'statuses']
@@ -67,8 +57,8 @@ def analyze(status):
                 result[u'statuses'].append(status)
                 result[u'state']="finish"
                 updata(result)
-                #savepdf(result)
-                #send_weibo(status,result[u'begin_id'])
+                send_weibo(status,result[u'begin_id'])
+                pdfkit.from_url("http://0.0.0.0:8080/activity?id="+str(result[u'begin_id']),"../static/"+str(result[u'begin_id'])+'.pdf')
             else:
                 result[u'statuses'].append(status)
                 updata(result)
@@ -86,7 +76,6 @@ if __name__=="__main__":
     page=1
     since_id=get_since_id()
     statuses=[]
-    print "downloading"
     while lenth>190:
         statuses+=download(page,since_id)
         page+=1

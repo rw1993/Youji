@@ -4,8 +4,8 @@ from weibo import APIClient
 
 class pachong:
     def __init__(self):
-	Appkey="367162776"
-        Appsecret="059f286cb49d0d922dd22aa83b5853d9"
+	Appkey="169287570"
+        Appsecret="8744d4799ccea4f57508f8b6115c830e"
         callbackurl="http://www.baidu.com"
         ack="2.00ZkgstF3mz1gEe89b68d8f9TXrgUE"
         expin="7837801"
