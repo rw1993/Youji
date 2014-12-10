@@ -1,0 +1,13 @@
+import web
+from weibo import APIClient
+
+urls=(
+        "get_code","get_code",
+        )
+app=web.application(urls,globals())
+class get_code:
+    def GET(self):
+        webinput=web.input()
+        code=webinput[u'code']
+        
+        

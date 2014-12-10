@@ -68,7 +68,7 @@ def analyze(status):
                 result[u'state']="finish"
                 updata(result)
                 #savepdf(result)
-                #send_weibo(status,result[u'begin_id'])
+                send_weibo(status,result[u'begin_id'])
             else:
                 result[u'statuses'].append(status)
                 updata(result)
